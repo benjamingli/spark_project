@@ -46,13 +46,13 @@ object liuliang {
             (word, 1)).reduceByKey(_+_)
         val after_wall = for (word <- predata) yield {
             word match{
-              case word if word._2>200 => {
+              case _ if word._2>200 => {
                   val middle :String = r2.replaceAllIn(word._1,m => m.group(1)+".***.***.***")
                   (middle,word._2)}
-              case word if word._2>50  => {
+              case _ if word._2>50  => {
                   val middle :String = r2.replaceAllIn(word._1,m => m.group(1)+"."+m.group(2)+".***.***")
                   (middle,word._2)}
-              case word if word._2>10  => {
+              case _ if word._2>10  => {
                   val middle :String = r2.replaceAllIn(word._1,m => m.group(1)+"."+m.group(2)+"."+m.group(3)+".***")
                   (middle,word._2)}
               case _ =>  word
